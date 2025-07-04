@@ -19,7 +19,6 @@ public:
 
 private:
     void CargarSpritesEnemigo() {
-        SpritesMovimiento->Add(Image::FromFile("sprites/enemigo1.png"));
-        SpritesMovimiento->Add(Image::FromFile("sprites/enemigo2.png"));
+        SpritesMovimiento->Add(Image::FromFile("robot aliado1.png"));
     }
 };

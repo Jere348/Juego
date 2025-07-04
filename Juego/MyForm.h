@@ -100,6 +100,7 @@ namespace MyForm {
 
 		void Form1_KeyDown(Object^ sender, KeyEventArgs^ e)
 		{
+			// Movimiento del jugador
 			if (e->KeyCode == Keys::Left)
 				juego->Jugador->Mover("izquierda");
 			else if (e->KeyCode == Keys::Right)
@@ -108,10 +109,44 @@ namespace MyForm {
 				juego->Jugador->Mover("arriba");
 			else if (e->KeyCode == Keys::Down)
 				juego->Jugador->Mover("abajo");
+
+			// CAMBIO DE MUNDO
+			else if (e->KeyCode == Keys::D1)
+				CambiarMundo(0);  // Mundo 1
+			else if (e->KeyCode == Keys::D2)
+				CambiarMundo(1);  // Mundo 2
+			else if (e->KeyCode == Keys::D3)
+				CambiarMundo(2);  // Mundo 3
 		}
 
 		void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 			// Opcional: mostrar mensaje inicial o título
+		}
+
+		void CambiarMundo(int nuevoIndice)
+		{
+			// Cambiar en la lógica
+			juego->CambiarMundo(nuevoIndice);
+
+			// Cambiar fondo
+			this->BackgroundImage = juego->ObtenerMundoActual()->Background;
+
+			// Eliminar recursos visuales actuales
+			for each (Control ^ c in this->Controls) {
+				if (dynamic_cast<PictureBox^>(c) != nullptr && c != pbJugador)
+					c->Visible = false;
+			}
+
+			// Mostrar los recursos del nuevo mundo
+			for each (Recurso ^ r in juego->ObtenerMundoActual()->Recursos) {
+				PictureBox^ pb = gcnew PictureBox();
+				pb->Size = Drawing::Size(32, 32);
+				pb->Location = Point(r->PosicionX, r->PosicionY);
+				pb->Image = r->ObtenerSpriteActual();
+				pb->SizeMode = PictureBoxSizeMode::StretchImage;
+				pb->Tag = r;
+				this->Controls->Add(pb);
+			}
 		}
 	};
 }
