@@ -47,7 +47,7 @@ public:
             a->Mover("derecha"); // ejemplo simple
         }
     }
-    void GenerarRecursosAleatorios(TipoRecurso tipo, int cantidad) {
+    void GenerarRecursosAleatorios(TipoRecurso tipo, int cantidad, int anchoMapa, int altoMapa) {
         array<String^>^ nombres;
 
         if (tipo == TipoRecurso::Humano) {
@@ -58,16 +58,38 @@ public:
         }
 
         Random^ rnd = gcnew Random();
+        List<Point>^ posicionesOcupadas = gcnew List<Point>();
 
         for (int i = 0; i < cantidad; i++) {
+            int intentos = 0;
+            Point nuevaPos;
+
+            do {
+                int x = rnd->Next(50, anchoMapa - 50);
+                int y = rnd->Next(50, altoMapa - 50);
+                nuevaPos = Point(x, y);
+                intentos++;
+            } while (YaExisteEnPosicion(posicionesOcupadas, nuevaPos) && intentos < 100);
+
+            // Elegir tipo aleatorio
             int index = rnd->Next(0, nombres->Length);
             String^ nombreAleatorio = nombres[index];
 
             Recurso^ r = gcnew Recurso(nombreAleatorio, tipo, 10);
-            r->PosicionX = rnd->Next(100, 700);
-            r->PosicionY = rnd->Next(100, 500);
+            r->PosicionX = nuevaPos.X;
+            r->PosicionY = nuevaPos.Y;
+
+            posicionesOcupadas->Add(nuevaPos);
             Recursos->Add(r);
         }
+    }
+    bool YaExisteEnPosicion(List<Point>^ posiciones, Point nueva) {
+        for each (Point p in posiciones) {
+            // Consideramos una distancia mínima entre objetos (32 px de sprite)
+            if (Math::Abs(p.X - nueva.X) < 32 && Math::Abs(p.Y - nueva.Y) < 32)
+                return true;
+        }
+        return false;
     }
 
 };

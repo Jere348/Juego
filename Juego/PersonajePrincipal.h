@@ -22,14 +22,12 @@ public:
     void PerderVida() {
         Vidas--;
     }
-    void ColocarRecurso(List<Recurso^>^ mundo3, int x, int y) {
-        if (Inventario->Count > 0) {
-            Recurso^ r = Inventario[0];
-            r->PosicionX = x;
-            r->PosicionY = y;
-            mundo3->Add(r);
-            Inventario->RemoveAt(0);
-        }
+    Recurso^ ColocarRecurso() {
+        if (Inventario->Count == 0) return nullptr;
+
+        Recurso^ r = Inventario[0];
+        Inventario->RemoveAt(0);
+        return r;
     }
 private:
     void CargarSpritesJugador() {
