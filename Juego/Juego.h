@@ -15,7 +15,7 @@ public:
     Juego(int anchoMapa, int altoMapa) {
         Mundos = gcnew List<Mundo^>();
         Jugador = gcnew PersonajePrincipal();
-        IndiceMundoActual = 0;
+        IndiceMundoActual = 3;
         TiempoRestante = 300;
         JuegoTerminado = false;
 
