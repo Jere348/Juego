@@ -25,6 +25,9 @@ public:
     }
 
     void AgregarRecurso(Recurso^ r) {
+        Random^ rnd = gcnew Random();
+        r->PosicionX = rnd->Next(50, 700);
+        r->PosicionY = rnd->Next(50, 500);
         Recursos->Add(r);
     }
 
@@ -44,13 +47,27 @@ public:
             a->Mover("derecha"); // ejemplo simple
         }
     }
-    void GenerarRecursos(String^ nombreBase, TipoRecurso tipo, int cantidad) {
+    void GenerarRecursosAleatorios(TipoRecurso tipo, int cantidad) {
+        array<String^>^ nombres;
+
+        if (tipo == TipoRecurso::Humano) {
+            nombres = gcnew array<String^>{ "Arbol", "Arbusto", "Molino" };
+        }
+        else {
+            nombres = gcnew array<String^>{ "Fabrica", "Nuclear", "Edificios" };
+        }
+
         Random^ rnd = gcnew Random();
+
         for (int i = 0; i < cantidad; i++) {
-            Recurso^ r = gcnew Recurso(nombreBase, tipo, 10);
+            int index = rnd->Next(0, nombres->Length);
+            String^ nombreAleatorio = nombres[index];
+
+            Recurso^ r = gcnew Recurso(nombreAleatorio, tipo, 10);
             r->PosicionX = rnd->Next(100, 700);
             r->PosicionY = rnd->Next(100, 500);
             Recursos->Add(r);
         }
     }
+
 };

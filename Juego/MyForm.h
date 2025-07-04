@@ -56,6 +56,9 @@ namespace MyForm {
 			juego = gcnew Juego();
 
 			// Crear PictureBox del jugador
+			this->SetStyle(ControlStyles::SupportsTransparentBackColor, true);
+			this->BackColor = Color::Transparent;
+
 			pbJugador = gcnew PictureBox();
 			pbJugador->Size = Drawing::Size(48, 48);
 			pbJugador->Location = Point(juego->Jugador->PosicionX, juego->Jugador->PosicionY);

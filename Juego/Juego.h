@@ -23,12 +23,12 @@ public:
 
     void InicializarMundos() {
         Mundo^ mundo1 = gcnew Mundo("Mundo Humano", "Mundo 1.png");
-        mundo1->AgregarRecurso(gcnew Recurso("Empatía", TipoRecurso::Humano, 10));
+        mundo1->GenerarRecursosAleatorios(TipoRecurso::Humano, 10);
         mundo1->AgregarAliado(gcnew Aliado("Mundo Humano"));
         mundo1->AgregarEnemigo(gcnew Enemigo(1));
 
         Mundo^ mundo2 = gcnew Mundo("Mundo Tecnológico", "Mundo 2.png");
-        mundo2->AgregarRecurso(gcnew Recurso("IA", TipoRecurso::Tecnologico, 15));
+        mundo2->GenerarRecursosAleatorios(TipoRecurso::Tecnologico, 10);
         mundo2->AgregarAliado(gcnew Aliado("Mundo Tecnológico"));
         mundo2->AgregarEnemigo(gcnew Enemigo(2));
 
