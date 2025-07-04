@@ -14,7 +14,7 @@ public:
     Juego() {
         Mundos = gcnew List<Mundo^>();
         Jugador = gcnew PersonajePrincipal();
-        IndiceMundoActual = 0;
+        IndiceMundoActual = 2;
         TiempoRestante = 300; // segundos, por ejemplo
         JuegoTerminado = false;
 

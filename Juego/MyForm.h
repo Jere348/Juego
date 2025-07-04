@@ -16,6 +16,10 @@ namespace MyForm {
 		MyForm(void)
 		{
 			InitializeComponent();
+			this->SetStyle(ControlStyles::AllPaintingInWmPaint |
+				ControlStyles::UserPaint |
+				ControlStyles::OptimizedDoubleBuffer, true);
+			this->UpdateStyles();
 			InicializarJuego();
 		}
 
