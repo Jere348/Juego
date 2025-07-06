@@ -1,12 +1,15 @@
 #include "MyFormMenu.h"
+
 using namespace System;
 using namespace System::Windows::Forms;
 
-[STAThread]
-void main()
+[STAThreadAttribute]
+int main(array<String^>^ args)
 {
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
-    TrabajoFinal2025::MyForm^ form = gcnew TrabajoFinal2025::MyForm();
-    Application::Run(form);
+
+    Application::Run(gcnew Juego::MyFormMenu());
+    return 0;
 }
+

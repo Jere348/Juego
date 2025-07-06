@@ -1,6 +1,6 @@
 #pragma once
 
-namespace TrabajoFinal2025 {
+namespace Juego {
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -39,7 +39,7 @@ namespace TrabajoFinal2025 {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container^ components;
+		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
