@@ -15,6 +15,8 @@ public:
     List<Recurso^>^ Recursos;
     List<Enemigo^>^ Enemigos;
     List<Aliado^>^ Aliados;
+    int RecursosOriginalesHumanos;
+    int RecursosOriginalesTecnologicos;
 
     Mundo(String^ nombre, String^ rutaFondo) {
         Nombre = nombre;

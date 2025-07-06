@@ -25,6 +25,7 @@ public:
     void InicializarMundos(int anchoMapa, int altoMapa) {
         Mundo^ mundo1 = gcnew Mundo("Mundo Humano", "Mundo 1.png");
         mundo1->GenerarRecursosAleatorios(TipoRecurso::Humano, 10, anchoMapa, altoMapa);
+        mundo1->RecursosOriginalesHumanos = 10;
         mundo1->AgregarAliado(gcnew Aliado("Mundo Humano"));
         mundo1->AgregarEnemigo(gcnew Enemigo("Pajaro", 1, anchoMapa,altoMapa));
         mundo1->AgregarEnemigo(gcnew Enemigo("HombreRoca", 1, anchoMapa,altoMapa));
@@ -32,6 +33,7 @@ public:
 
         Mundo^ mundo2 = gcnew Mundo("Mundo Tecnológico", "Mundo 2.png");
         mundo2->GenerarRecursosAleatorios(TipoRecurso::Tecnologico, 10, anchoMapa, altoMapa);
+        mundo2->RecursosOriginalesTecnologicos = 10;
         mundo2->AgregarAliado(gcnew Aliado("Mundo Tecnológico"));
         mundo2->AgregarEnemigo(gcnew Enemigo("Robot1", 2,anchoMapa,altoMapa));
         mundo2->AgregarEnemigo(gcnew Enemigo("Robot2", 2,anchoMapa,altoMapa));
@@ -74,5 +76,22 @@ public:
         for each (Enemigo ^ enemigo in ObtenerMundoActual()->Enemigos) {
             enemigo->MoverAutomatico(anchoMapa);
         }
+    }
+
+    bool VerificarVictoriaPorEquilibrio() {
+        Mundo^ mundo3 = Mundos[2];
+
+        int totalHumanos = 0;
+        int totalTecnologicos = 0;
+
+        for each (Recurso ^ r in mundo3->Recursos) {
+            if (r->Tipo == TipoRecurso::Humano) totalHumanos++;
+            else if (r->Tipo == TipoRecurso::Tecnologico) totalTecnologicos++;
+        }
+
+        int mitadHumanos = Mundos[0]->RecursosOriginalesHumanos / 2;
+        int mitadTecnologicos = Mundos[1]->RecursosOriginalesTecnologicos / 2;
+
+        return totalHumanos >= mitadHumanos && totalTecnologicos >= mitadTecnologicos;
     }
 };

@@ -113,7 +113,7 @@ namespace MyForm {
 					Enemigo^ enemigo = dynamic_cast<Enemigo^>(pb->Tag);
 					if (enemigo != nullptr) {
 						pb->Location = Point(enemigo->PosicionX, enemigo->PosicionY);
-						pb->Image = enemigo->ObtenerSpriteActual(); // 👈 Cambia de frame
+						pb->Image = enemigo->ObtenerSpriteActual(); //  Cambia de frame
 					}
 				}
 			}
@@ -164,6 +164,11 @@ namespace MyForm {
 			if (juego->Jugador->Vidas <= 0) {
 				timerJuego->Stop();
 				MessageBox::Show("¡Te has quedado sin vidas!", "Fin del juego");
+				juego->JuegoTerminado = true;
+			}
+			if (juego->VerificarVictoriaPorEquilibrio()) {
+				timerJuego->Stop();
+				MessageBox::Show("¡Ganaste! Lograste el equilibrio en el Mundo Blanco.", "Victoria");
 				juego->JuegoTerminado = true;
 			}
 		}
