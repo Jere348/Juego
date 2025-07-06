@@ -19,6 +19,9 @@
     <Filter Include="Archivos de recursos\Sprites">
       <UniqueIdentifier>{0afc7d6a-06fb-43a7-891f-a928a0674223}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de recursos\Archivos">
+      <UniqueIdentifier>{01aa373a-1faa-4477-b03e-8396ad38459e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyForm.cpp">
@@ -48,6 +51,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Juego.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Configuracion.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
@@ -181,5 +187,10 @@
     <Image Include="Robot3.izquierda.png">
       <Filter>Archivos de recursos\Sprites</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Parameters.txt">
+      <Filter>Archivos de recursos\Archivos</Filter>
+    </Text>
   </ItemGroup>
 </Project>

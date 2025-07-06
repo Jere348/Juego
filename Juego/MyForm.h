@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "Juego.h"
-
+#include "Configuracion.h"
 namespace MyForm {
 
 	using namespace System;
@@ -68,7 +68,7 @@ namespace MyForm {
 		{
 			int anchoMapa = this->ClientSize.Width;
 			int altoMapa = this->ClientSize.Height;
-
+			Configuracion::CargarParametrosDesdeArchivo("Parameters.txt");
 			juego = gcnew Juego(anchoMapa, altoMapa);
 
 			// Crear PictureBox del jugador
@@ -94,10 +94,14 @@ namespace MyForm {
 
 		void ActualizarJuego(Object^ sender, EventArgs^ e)
 		{
-			if (teclaIzquierda) juego->Jugador->Mover("izquierda");
-			if (teclaDerecha)  juego->Jugador->Mover("derecha");
-			if (teclaArriba)   juego->Jugador->Mover("arriba");
-			if (teclaAbajo)    juego->Jugador->Mover("abajo");
+			int ancho = this->ClientSize.Width;
+			int alto = this->ClientSize.Height;
+
+			if (teclaIzquierda) juego->Jugador->Mover("izquierda", ancho, alto);
+			if (teclaDerecha)  juego->Jugador->Mover("derecha", ancho, alto);
+			if (teclaArriba)   juego->Jugador->Mover("arriba", ancho, alto);
+			if (teclaAbajo)    juego->Jugador->Mover("abajo", ancho, alto);
+
 
 			// Redibujar sprite y actualizar posición del PictureBox
 			pbJugador->Location = Point(juego->Jugador->PosicionX, juego->Jugador->PosicionY);

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Entidad.h"
 #include "Recurso.h"
 #include "Enemigo.h"
@@ -41,14 +41,16 @@ public:
         Aliados->Add(a);
     }
 
-    void ActualizarEntidades() {
+    void ActualizarEntidades(int anchoMapa) {
         for each (Enemigo ^ e in Enemigos) {
-            e->Mover("izquierda"); // ejemplo simple
+            e->MoverAutomatico(anchoMapa); // ← usa su movimiento automático
         }
         for each (Aliado ^ a in Aliados) {
-            a->Mover("derecha"); // ejemplo simple
+            // Si Aliado también tiene movimiento automático, crea un método similar.
+            // Por ahora lo dejamos fijo o con otro tipo de movimiento si no aplica.
         }
     }
+
     void GenerarRecursosAleatorios(TipoRecurso tipo, int cantidad, int anchoMapa, int altoMapa) {
         array<String^>^ nombres;
 
@@ -87,7 +89,7 @@ public:
     }
     bool YaExisteEnPosicion(List<Point>^ posiciones, Point nueva) {
         for each (Point p in posiciones) {
-            // Consideramos una distancia m�nima entre objetos (32 px de sprite)
+            // Consideramos una distancia mínima entre objetos (32 px de sprite)
             if (Math::Abs(p.X - nueva.X) < 32 && Math::Abs(p.Y - nueva.Y) < 32)
                 return true;
         }

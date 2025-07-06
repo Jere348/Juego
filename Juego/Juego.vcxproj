@@ -122,6 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aliado.h" />
+    <ClInclude Include="Configuracion.h" />
     <ClInclude Include="Enemigo.h" />
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="Juego.h" />
@@ -176,6 +177,9 @@
     <Image Include="trainer.right3.png" />
     <Image Include="trainer.right4.png" />
     <Image Include="viejo sabio aliado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Parameters.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

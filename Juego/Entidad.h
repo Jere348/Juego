@@ -16,13 +16,19 @@ public:
         FrameActual = 0;
     }
 
-    virtual void Mover(String^ direccion) {
-        if (direccion == "izquierda") PosicionX -= 5;
-        else if (direccion == "derecha") PosicionX += 5;
-        else if (direccion == "arriba") PosicionY -= 5;
-        else if (direccion == "abajo") PosicionY += 5;
+    void Mover(String^ direccion, int anchoMapa, int altoMapa) {
+        int paso = 5;
 
-        AvanzarAnimacion();
+        if (direccion == "izquierda" && PosicionX - paso >= 0)
+            PosicionX -= paso;
+        else if (direccion == "derecha" && PosicionX + paso + 48 <= anchoMapa)
+            PosicionX += paso;
+        else if (direccion == "arriba" && PosicionY - paso >= 0)
+            PosicionY -= paso;
+        else if (direccion == "abajo" && PosicionY + paso + 48 <= altoMapa)
+            PosicionY += paso;
+
+        AvanzarAnimacion(); // si usas animación
     }
 
     void AvanzarAnimacion() {
