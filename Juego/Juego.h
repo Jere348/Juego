@@ -33,9 +33,9 @@ public:
         Mundo^ mundo2 = gcnew Mundo("Mundo Tecnológico", "Mundo 2.png");
         mundo2->GenerarRecursosAleatorios(TipoRecurso::Tecnologico, 10, anchoMapa, altoMapa);
         mundo2->AgregarAliado(gcnew Aliado("Mundo Tecnológico"));
-        mundo2->AgregarEnemigo(gcnew Enemigo("Robot", 2,anchoMapa,altoMapa));
-        mundo2->AgregarEnemigo(gcnew Enemigo("Drone", 2,anchoMapa,altoMapa));
-        mundo2->AgregarEnemigo(gcnew Enemigo("Camara", 2,anchoMapa,altoMapa));
+        mundo2->AgregarEnemigo(gcnew Enemigo("Robot1", 2,anchoMapa,altoMapa));
+        mundo2->AgregarEnemigo(gcnew Enemigo("Robot2", 2,anchoMapa,altoMapa));
+        mundo2->AgregarEnemigo(gcnew Enemigo("Robot3", 2,anchoMapa,altoMapa));
 
         Mundo^ mundo3 = gcnew Mundo("Mundo Blanco", "Mundo 3.png");
 

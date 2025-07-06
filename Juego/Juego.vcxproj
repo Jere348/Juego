@@ -153,6 +153,12 @@
     <Image Include="RecursoT2.png" />
     <Image Include="RecursoT3.png" />
     <Image Include="robot aliado1.png" />
+    <Image Include="Robot1.derecha.png" />
+    <Image Include="Robot1.izquierda.png" />
+    <Image Include="Robot2.derecha.png" />
+    <Image Include="Robot2.izquierda.png" />
+    <Image Include="Robot3.derecha.png" />
+    <Image Include="Robot3.izquierda.png" />
     <Image Include="trainer.back1.png" />
     <Image Include="trainer.back2.png" />
     <Image Include="trainer.back3.png" />

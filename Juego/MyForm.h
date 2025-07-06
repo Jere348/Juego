@@ -43,6 +43,7 @@ namespace MyForm {
 		bool teclaDerecha = false;
 		bool teclaArriba = false;
 		bool teclaAbajo = false;
+		int framesInvulnerable = 0;
 
 
 #pragma region Windows Form Designer generated code
@@ -129,8 +130,42 @@ namespace MyForm {
 				MessageBox::Show("¡GANASTE!", "Victoria");
 			}
 
+			for each (Control ^ c in this->Controls) {
+				PictureBox^ pb = dynamic_cast<PictureBox^>(c);
+				if (pb != nullptr) {
+					Enemigo^ enemigo = dynamic_cast<Enemigo^>(pb->Tag);
+					if (enemigo != nullptr) {
+						pb->Location = Point(enemigo->PosicionX, enemigo->PosicionY);
+						pb->Image = enemigo->ObtenerSpriteActual();
 
+						// Colisión con el jugador
+						if (pb->Bounds.IntersectsWith(pbJugador->Bounds)) {
+							juego->Jugador->PerderVida();
 
+							
+
+							// Mover al jugador al mundo vacío (índice 2)
+							CambiarMundo(2);
+
+							
+							MessageBox::Show("¡Has sido atacado! Vida -1", "¡Cuidado!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+
+							// Opcional: mover al jugador a posición inicial segura
+							juego->Jugador->PosicionX = 100;
+							juego->Jugador->PosicionY = 100;
+							pbJugador->Location = Point(100, 100);
+
+							break; // evita múltiples colisiones en el mismo frame
+						}
+					}
+				}
+			}
+
+			if (juego->Jugador->Vidas <= 0) {
+				timerJuego->Stop();
+				MessageBox::Show("¡Te has quedado sin vidas!", "Fin del juego");
+				juego->JuegoTerminado = true;
+			}
 		}
 
 

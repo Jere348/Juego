@@ -163,5 +163,23 @@
     <Image Include="pajaro.izquierda4.png">
       <Filter>Archivos de recursos\Sprites</Filter>
     </Image>
+    <Image Include="Robot1.derecha.png">
+      <Filter>Archivos de recursos\Sprites</Filter>
+    </Image>
+    <Image Include="Robot1.izquierda.png">
+      <Filter>Archivos de recursos\Sprites</Filter>
+    </Image>
+    <Image Include="Robot2.derecha.png">
+      <Filter>Archivos de recursos\Sprites</Filter>
+    </Image>
+    <Image Include="Robot2.izquierda.png">
+      <Filter>Archivos de recursos\Sprites</Filter>
+    </Image>
+    <Image Include="Robot3.derecha.png">
+      <Filter>Archivos de recursos\Sprites</Filter>
+    </Image>
+    <Image Include="Robot3.izquierda.png">
+      <Filter>Archivos de recursos\Sprites</Filter>
+    </Image>
   </ItemGroup>
 </Project>

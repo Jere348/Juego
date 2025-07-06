@@ -77,6 +77,32 @@ private:
 			// Valor inicial
 			SpritesMovimiento = SpritesIzquierda;
 		}
+		else if (Nombre == "Robot1") {
+			Image^ sheetIzq = Image::FromFile("Robot1.izquierda.png");
+			SpritesIzquierda = CortarSpriteSheet(sheetIzq, 3);
+
+			Image^ sheetDer = Image::FromFile("Robot1.derecha.png");
+			SpritesDerecha = CortarSpriteSheet(sheetDer, 3);
+
+			// Valor inicial
+			SpritesMovimiento = SpritesIzquierda;
+		}
+		else if (Nombre == "Robot2") {
+			Image^ sheetIzq = Image::FromFile("Robot2.izquierda.png");
+			SpritesIzquierda = CortarSpriteSheet(sheetIzq, 3);
+			Image^ sheetDer = Image::FromFile("Robot2.derecha.png");
+			SpritesDerecha = CortarSpriteSheet(sheetDer, 3);
+			// Valor inicial
+			SpritesMovimiento = SpritesIzquierda;
+		}
+		else if (Nombre == "Robot3") {
+			Image^ sheetIzq = Image::FromFile("Robot3.izquierda.png");
+			SpritesIzquierda = CortarSpriteSheet(sheetIzq, 3);
+			Image^ sheetDer = Image::FromFile("Robot3.derecha.png");
+			SpritesDerecha = CortarSpriteSheet(sheetDer, 3);
+			// Valor inicial
+			SpritesMovimiento = SpritesIzquierda;
+		}
 		
 	}
 };
