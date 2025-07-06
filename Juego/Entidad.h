@@ -33,4 +33,24 @@ public:
     Image^ ObtenerSpriteActual() {
         return (SpritesMovimiento->Count > 0) ? SpritesMovimiento[FrameActual] : nullptr;
     }
+
+    List<Image^>^ CortarSpriteSheet(Image^ sheet, int totalFrames) {
+        List<Image^>^ frames = gcnew List<Image^>();
+
+        int anchoFrame = sheet->Width / totalFrames;
+        int altoFrame = sheet->Height;
+
+        for (int i = 0; i < totalFrames; i++) {
+            Bitmap^ frame = gcnew Bitmap(anchoFrame, altoFrame);
+            Graphics^ g = Graphics::FromImage(frame);
+            g->DrawImage(sheet,
+                Rectangle(0, 0, anchoFrame, altoFrame),              // destino
+                Rectangle(i * anchoFrame, 0, anchoFrame, altoFrame), // origen
+                GraphicsUnit::Pixel);
+            frames->Add(frame);
+        }
+
+        return frames;
+    }
+
 };

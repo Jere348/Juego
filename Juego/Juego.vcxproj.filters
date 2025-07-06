@@ -142,5 +142,26 @@
     <Image Include="RecursoT3.png">
       <Filter>Archivos de recursos\Sprites</Filter>
     </Image>
+    <Image Include="golem.izquierda.png">
+      <Filter>Archivos de recursos\Sprites</Filter>
+    </Image>
+    <Image Include="golem2.derecha.png">
+      <Filter>Archivos de recursos\Sprites</Filter>
+    </Image>
+    <Image Include="golem2.izquierda.png">
+      <Filter>Archivos de recursos\Sprites</Filter>
+    </Image>
+    <Image Include="pajaro.izquierda1.png">
+      <Filter>Archivos de recursos\Sprites</Filter>
+    </Image>
+    <Image Include="pajaro.izquierda2.png">
+      <Filter>Archivos de recursos\Sprites</Filter>
+    </Image>
+    <Image Include="pajaro.izquierda3.png">
+      <Filter>Archivos de recursos\Sprites</Filter>
+    </Image>
+    <Image Include="pajaro.izquierda4.png">
+      <Filter>Archivos de recursos\Sprites</Filter>
+    </Image>
   </ItemGroup>
 </Project>

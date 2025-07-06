@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Juego.h"
 
 namespace MyForm {
@@ -22,6 +22,7 @@ namespace MyForm {
 
 			this->UpdateStyles();
 			InicializarJuego();
+
 		}
 
 	protected:
@@ -97,21 +98,39 @@ namespace MyForm {
 			if (teclaArriba)   juego->Jugador->Mover("arriba");
 			if (teclaAbajo)    juego->Jugador->Mover("abajo");
 
-			// Redibujar sprite y actualizar posición del PictureBox
+			// Redibujar sprite y actualizar posiciÃ³n del PictureBox
 			pbJugador->Location = Point(juego->Jugador->PosicionX, juego->Jugador->PosicionY);
 			pbJugador->Image = juego->Jugador->ObtenerSpriteActual();
+
+			int anchoMapa = this->ClientSize.Width;
+			juego->MoverEnemigosDelMundoActual(anchoMapa);
+
+			// Redibujar enemigos
+			for each (Control ^ c in this->Controls) {
+				PictureBox^ pb = dynamic_cast<PictureBox^>(c);
+				if (pb != nullptr) {
+					Enemigo^ enemigo = dynamic_cast<Enemigo^>(pb->Tag);
+					if (enemigo != nullptr) {
+						pb->Location = Point(enemigo->PosicionX, enemigo->PosicionY);
+						pb->Image = enemigo->ObtenerSpriteActual(); // ðŸ‘ˆ Cambia de frame
+					}
+				}
+			}
 
 			this->Text = "Vidas: " + juego->Jugador->Vidas.ToString() + " | Tiempo: " + juego->TiempoRestante.ToString();
 
 			if (juego->JuegoTerminado) {
 				timerJuego->Stop();
-				MessageBox::Show("¡PERDISTE!", "Fin del juego");
+				MessageBox::Show("Â¡PERDISTE!", "Fin del juego");
 			}
 
 			if (juego->VerificarVictoria()) {
 				timerJuego->Stop();
-				MessageBox::Show("¡GANASTE!", "Victoria");
+				MessageBox::Show("Â¡GANASTE!", "Victoria");
 			}
+
+
+
 		}
 
 
@@ -148,7 +167,7 @@ namespace MyForm {
 			if (e->KeyCode == Keys::E && juego->ObtenerMundoActual() == juego->Mundos[2]) {
 				Recurso^ recursoColocado = juego->Jugador->ColocarRecurso();
 				if (recursoColocado != nullptr) {
-					// Asignar posición al recurso según el jugador
+					// Asignar posiciÃ³n al recurso segÃºn el jugador
 					recursoColocado->PosicionX = juego->Jugador->PosicionX;
 					recursoColocado->PosicionY = juego->Jugador->PosicionY;
 
@@ -180,12 +199,12 @@ namespace MyForm {
 
 
 		void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
-			// Opcional: mostrar mensaje inicial o título
+			// Opcional: mostrar mensaje inicial o tÃ­tulo
 		}
 
 		void CambiarMundo(int nuevoIndice)
 		{
-			// Cambiar en la lógica
+			// Cambiar en la lÃ³gica
 			juego->CambiarMundo(nuevoIndice);
 
 			// Cambiar fondo
@@ -214,6 +233,17 @@ namespace MyForm {
 				pb->SizeMode = PictureBoxSizeMode::StretchImage;
 				pb->BackColor = Color::Transparent;
 				pb->Tag = r;
+				this->Controls->Add(pb);
+			}
+			// Mostrar los enemgiso del nuevo mundo
+			for each (Enemigo ^ enemigo in juego->ObtenerMundoActual()->Enemigos) {
+				PictureBox^ pb = gcnew PictureBox();
+				pb->Size = Drawing::Size(32, 32);
+				pb->Location = Point(enemigo->PosicionX, enemigo->PosicionY);
+				pb->Image = enemigo->ObtenerSpriteActual();
+				pb->SizeMode = PictureBoxSizeMode::StretchImage;
+				pb->BackColor = Color::Transparent;
+				pb->Tag = enemigo;
 				this->Controls->Add(pb);
 			}
 		}

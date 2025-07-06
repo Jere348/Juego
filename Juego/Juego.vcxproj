@@ -137,8 +137,15 @@
     <Image Include="Aliado2.png" />
     <Image Include="Aliado3.png" />
     <Image Include="Aliado4.png" />
+    <Image Include="golem.izquierda.png" />
+    <Image Include="golem2.derecha.png" />
+    <Image Include="golem2.izquierda.png" />
     <Image Include="Mundo 1.png" />
     <Image Include="pajaro enemigo natural.png" />
+    <Image Include="pajaro.izquierda1.png" />
+    <Image Include="pajaro.izquierda2.png" />
+    <Image Include="pajaro.izquierda3.png" />
+    <Image Include="pajaro.izquierda4.png" />
     <Image Include="RecursoN1.png" />
     <Image Include="RecursoN2.png" />
     <Image Include="RecursoN3.png" />
