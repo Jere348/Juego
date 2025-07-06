@@ -25,10 +25,17 @@ public:
     }
 
     void InicializarMundos(int anchoMapa, int altoMapa) {
+        int margen = 20;
+        int w = 48;
+        int h = 48;
+        int posX = anchoMapa - w - margen;
+        int posY = altoMapa - h - margen;
+
+    
         Mundo^ mundo1 = gcnew Mundo("Mundo Humano", "Mundo 1.png");
         mundo1->GenerarRecursosAleatorios(TipoRecurso::Humano, Configuracion::RecursosHumanos, anchoMapa, altoMapa);
         mundo1->RecursosOriginalesHumanos = Configuracion::RecursosHumanos;
-        mundo1->AgregarAliado(gcnew Aliado("Mundo Humano"));
+        mundo1->AgregarAliado(gcnew Aliado("Mundo Humano", posX, posY)); // 
         mundo1->AgregarEnemigo(gcnew Enemigo("Pajaro", 1, anchoMapa,altoMapa));
         mundo1->AgregarEnemigo(gcnew Enemigo("HombreRoca", 1, anchoMapa,altoMapa));
         mundo1->AgregarEnemigo(gcnew Enemigo("Golem", 1, anchoMapa,altoMapa));
@@ -36,7 +43,7 @@ public:
         Mundo^ mundo2 = gcnew Mundo("Mundo Tecnológico", "Mundo 2.png");
         mundo2->GenerarRecursosAleatorios(TipoRecurso::Tecnologico, Configuracion::RecursosTecnologicos, anchoMapa, altoMapa);
         mundo2->RecursosOriginalesTecnologicos = Configuracion::RecursosTecnologicos;
-        mundo2->AgregarAliado(gcnew Aliado("Mundo Tecnológico"));
+        mundo2->AgregarAliado(gcnew Aliado("Mundo Tecnológico", posX, posY)); // 
         mundo2->AgregarEnemigo(gcnew Enemigo("Robot1", 2,anchoMapa,altoMapa));
         mundo2->AgregarEnemigo(gcnew Enemigo("Robot2", 2,anchoMapa,altoMapa));
         mundo2->AgregarEnemigo(gcnew Enemigo("Robot3", 2,anchoMapa,altoMapa));
@@ -60,8 +67,8 @@ public:
 
     }
 
-    void ActualizarEstado() {
-        ObtenerMundoActual()->ActualizarEntidades(1);
+    void ActualizarEstado(int Ancho) {
+        ObtenerMundoActual()->ActualizarEntidades(Ancho);
         TiempoRestante--;
 
         if (TiempoRestante <= 0 || Jugador->Vidas <= 0) {

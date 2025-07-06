@@ -23,24 +23,38 @@ public:
 		PosicionY = rndGlobal->Next(50, Math::Max(51, altoMapa - 82));
 		Console::WriteLine("[" + Nombre + "] X: " + PosicionX + ", Y: " + PosicionY);
 
+
+
 		CargarSpritesEnemigo();
 	}
 	void MoverAutomatico(int anchoMapa) {
+		int spriteAncho = 48;
+
 		if (MoverDerecha) {
 			PosicionX += VelocidadX;
+
+			if (PosicionX + spriteAncho >= anchoMapa) {
+				PosicionX = anchoMapa - spriteAncho;
+				MoverDerecha = false;
+			}
+
 			SpritesMovimiento = SpritesDerecha;
 		}
 		else {
 			PosicionX -= VelocidadX;
+
+			if (PosicionX <= 0) {
+				PosicionX = 0;
+				MoverDerecha = true;
+			}
+
 			SpritesMovimiento = SpritesIzquierda;
 		}
-
-		// Rebotar en bordes
-		if (PosicionX <= 0) MoverDerecha = true;
-		else if (PosicionX >= anchoMapa - 32) MoverDerecha = false;
+		Console::WriteLine("[" + Nombre + "] Pos: " + PosicionX + " | Dir: " + (MoverDerecha ? "→" : "←"));
 
 		AvanzarAnimacion();
 	}
+
 
 private:
 	

@@ -175,6 +175,8 @@ namespace MyForm {
 				MessageBox::Show("¡Ganaste! Lograste el equilibrio en el Mundo Blanco.", "Victoria");
 				juego->JuegoTerminado = true;
 			}
+			juego->ActualizarEstado(anchoMapa);
+
 		}
 
 
@@ -204,6 +206,20 @@ namespace MyForm {
 							this->Controls->Remove(pb);
 							juego->ObtenerMundoActual()->Recursos->Remove(recurso);
 							break;
+						}
+					}
+				}
+			}
+			if (e->KeyCode == Keys::E) {
+				for each (Control ^ c in this->Controls) {
+					PictureBox^ pb = dynamic_cast<PictureBox^>(c);
+					if (pb != nullptr) {
+						Aliado^ aliado = dynamic_cast<Aliado^>(pb->Tag);
+						if (aliado != nullptr &&
+							pb->Bounds.IntersectsWith(pbJugador->Bounds)) {
+
+							aliado->Ayudar(juego->Jugador);
+							MessageBox::Show("Aliado te ha ayudado. +1 Vida", "Gracias", MessageBoxButtons::OK, MessageBoxIcon::Information);
 						}
 					}
 				}
@@ -288,6 +304,16 @@ namespace MyForm {
 				pb->SizeMode = PictureBoxSizeMode::StretchImage;
 				pb->BackColor = Color::Transparent;
 				pb->Tag = enemigo;
+				this->Controls->Add(pb);
+			}
+			for each (Aliado ^ a in juego->ObtenerMundoActual()->Aliados) {
+				PictureBox^ pb = gcnew PictureBox();
+				pb->Size = Drawing::Size(48, 48);
+				pb->Location = Point(a->PosicionX, a->PosicionY);
+				pb->Image = a->ObtenerSpriteActual();
+				pb->SizeMode = PictureBoxSizeMode::StretchImage;
+				pb->BackColor = Color::Transparent;
+				pb->Tag = a;
 				this->Controls->Add(pb);
 			}
 		}
