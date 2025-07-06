@@ -119,6 +119,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="MyFormCreditos.cpp" />
+    <ClCompile Include="MyFormMenu.cpp" />
+    <ClCompile Include="MyFormRanking.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aliado.h" />
@@ -128,6 +131,15 @@
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Mundo.h" />
     <ClInclude Include="MyForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="MyFormCreditos.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="MyFormMenu.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="MyFormRanking.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="PersonajePrincipal.h" />
@@ -142,6 +154,8 @@
     <Image Include="golem2.derecha.png" />
     <Image Include="golem2.izquierda.png" />
     <Image Include="Mundo 1.png" />
+    <Image Include="Mundo 2.png" />
+    <Image Include="Mundo 3.png" />
     <Image Include="pajaro enemigo natural.png" />
     <Image Include="pajaro.izquierda1.png" />
     <Image Include="pajaro.izquierda2.png" />
@@ -160,6 +174,7 @@
     <Image Include="Robot2.izquierda.png" />
     <Image Include="Robot3.derecha.png" />
     <Image Include="Robot3.izquierda.png" />
+    <Image Include="Titulo.png" />
     <Image Include="trainer.back1.png" />
     <Image Include="trainer.back2.png" />
     <Image Include="trainer.back3.png" />
@@ -180,6 +195,17 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Parameters.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MyFormCreditos.resx">
+      <DependentUpon>MyFormCreditos.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyFormMenu.resx">
+      <DependentUpon>MyFormMenu.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyFormRanking.resx">
+      <DependentUpon>MyFormRanking.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
